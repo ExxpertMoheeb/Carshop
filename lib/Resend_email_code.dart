@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:auto_app/Register_verification.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Resend extends StatefulWidget {
@@ -11,6 +12,13 @@ class Resend extends StatefulWidget {
 }
 
 class _ResendState extends State<Resend> {
+  TextEditingController optcontroller=TextEditingController();
+  FirebaseAuth _auth=FirebaseAuth.instance;
+  String errorMessage='';
+   
+    otp(){
+      
+    }
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;

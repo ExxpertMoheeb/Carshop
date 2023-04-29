@@ -1,9 +1,12 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, prefer_final_fields, use_build_context_synchronously
 
 import 'package:auto_app/Forget_password.dart';
 import 'package:auto_app/CarouselForm.dart';
 import 'package:auto_app/Registeration.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -24,14 +27,15 @@ class _LoginScreenState extends State<LoginScreen> {
     User? loginuser;
 final GoogleSignIn googleSignIns = GoogleSignIn();
 
-    final GoogleSignInAccount? googleSignInAccount =
-        await googleSignIns.signIn();
     void googlesigning()async{
 
 
+    final GoogleSignInAccount? googleSignInAccount =
+        await googleSignIns.signIn();
+
     if (googleSignInAccount != null) {
       final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount!.authentication;
+          await googleSignInAccount.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
@@ -42,7 +46,7 @@ final GoogleSignIn googleSignIns = GoogleSignIn();
         final UserCredential userCredential =
             await auth.signInWithCredential(credential);
 
-        user= userCredential.user;
+       var user= userCredential.user;
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           // handle the error here
@@ -55,7 +59,7 @@ final GoogleSignIn googleSignIns = GoogleSignIn();
       }
     }
 
-    return loginuser;
+    return null;
   }
 
     
@@ -138,9 +142,11 @@ final GoogleSignIn googleSignIns = GoogleSignIn();
                               height: height*0.07,
                                child: TextFormField(
                                 cursorColor: Colors.black,
+                                controller: emailcontroller,
                                 decoration:const InputDecoration(
                              
                                      border: OutlineInputBorder(
+                                      
                                       //borderRadius: BorderRadius.circular(30),
                                      borderSide: BorderSide.none
                                      ),
@@ -160,6 +166,7 @@ final GoogleSignIn googleSignIns = GoogleSignIn();
                              child: SizedBox(
                               height: height*0.07,
                                child: TextFormField(
+                                controller: passwordcontroller,
                                                          obscureText: hide,
                                 cursorColor: Colors.black,
                                 decoration:const InputDecoration(
@@ -183,8 +190,10 @@ final GoogleSignIn googleSignIns = GoogleSignIn();
                               child: SizedBox(
                                 width:double.infinity,
                                 height: height*0.055,
-                                child: ElevatedButton(onPressed: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const mainForm()));
+                                child: ElevatedButton(
+                                  onPressed: (){
+                                    signin();
+                                  
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.black,

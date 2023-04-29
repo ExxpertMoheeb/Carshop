@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names, camel_case_types, file_names
 
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+
 import 'package:auto_app/BodyParts.dart';
 import 'package:auto_app/Brake_Switch.dart';
 import 'package:auto_app/Business_Registeration.dart';
@@ -8,12 +11,12 @@ import 'package:auto_app/Engine_Parts.dart';
 import 'package:auto_app/Featureproduct.dart';
 import 'package:auto_app/Find4X4Parts.dart';
 import 'package:auto_app/HeadLights.dart';
+import 'package:auto_app/MyOrder.dart';
 import 'package:auto_app/Notification.dart';
+import 'package:auto_app/Profile.dart';
 import 'package:auto_app/Search.dart';
 import 'package:auto_app/Setting.dart';
 import 'package:auto_app/latestproducts.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
 
 class mainForm extends StatefulWidget {
   const mainForm({super.key});
@@ -340,15 +343,13 @@ class _mainFormState extends State<mainForm> {
                         enableInfiniteScroll: true,
                         autoPlayAnimationDuration: const Duration(seconds: 3),
                         autoPlayInterval: Duration(seconds: 3),
-                        viewportFraction: 0.8,
-                        onPageChanged: (index,indexs) {
+                                              onPageChanged: (index,indexs) {
                           setState(() {
                             currentindex = index;
                           });
                         },
                       ),
-                    ),
-                  ),
+                  ),),
                   SizedBox(
                     height: height * 0.02,
                   ),
@@ -643,7 +644,7 @@ class _mainFormState extends State<mainForm> {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text('Markwilliam@gmail.com'),
-                  )
+                  ))
                 ],
               ),
             ),

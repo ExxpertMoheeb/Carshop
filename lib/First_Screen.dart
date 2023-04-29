@@ -1,7 +1,7 @@
+ // ignore_for_file: file_names, non_constant_identifier_names
+
  import 'package:auto_app/Splash_Screen/First_splash.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
@@ -21,8 +21,7 @@ class _FirstScreenState extends State<FirstScreen> {
         
                 Padding(
                   padding:  EdgeInsets.only(top:height*0.17 ,left: width*0.03),
-                  child: Container(
-                   child: Image.asset('asset/logo1.png')),
+                  child: Image.asset('asset/logo1.png'),
                 ),
                    Padding(
                     padding:  EdgeInsets.only(left: width*0.023,right: width*0.023,top: height*0.07),
@@ -31,7 +30,7 @@ class _FirstScreenState extends State<FirstScreen> {
                        shadowColor: Colors.black,
                        color: Colors.white,
                        shape:RoundedRectangleBorder(borderRadius:BorderRadius.circular(16)),
-                       child: Container(
+                       child: SizedBox(
                                     
                         height: height*0.4,
                         width: width,
@@ -62,7 +61,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                  SizedBox(height: height*0.005,),
                                      
                                   
-                                    Divider(color:Colors.black38,),
+                                   const  Divider(color:Colors.black38,),
                                     SizedBox(height: height*0.01,), 
                                     Row(
                                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,7 +70,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                         SizedBox(width:width*0.03),
                                         Image.asset('asset/arab.png',height: 20,width: 20,),
                                         SizedBox(width:width*0.15,),
-                                         Text('عربی'),
+                                        const  Text('عربی'),
                                          SizedBox(width:width*0.52,),
                                       const   CircleAvatar(
                                           backgroundColor: Colors.black,
@@ -93,10 +92,10 @@ class _FirstScreenState extends State<FirstScreen> {
                                           SizedBox(width:width*0.03),
                                           Image.asset('asset/download.png',height: 20,width: 20,),
                                           SizedBox(width:width*0.15,),
-                                           Text('English'),
+                                         const   Text('English'),
                                            SizedBox(width:width*0.47,),
                                      InkWell(
-                                          onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>FirstSplash())),
+                                          onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>const FirstSplash())),
                                           child :const CircleAvatar(
                                               backgroundColor: Colors.black,
                                               radius: 12,
